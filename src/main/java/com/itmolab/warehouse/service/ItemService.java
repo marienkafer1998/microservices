@@ -5,7 +5,7 @@ import com.itmolab.warehouse.repository.ItemRepository;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired; //!!!!
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,10 +13,6 @@ public class ItemService implements IItemService{
 
     @Autowired
     private ItemRepository repository;
-
-    public ItemService (ItemRepository repository) {
-        this.repository = repository;
-    }
 
 
     @Override
@@ -34,20 +30,18 @@ public class ItemService implements IItemService{
     }
 
     @Override
-    public Item CreateItem(String name, int amount, float price){
+    public void CreateItem(String name, Integer amount, Float price){
         Item itemModel = new Item();
         itemModel.setName(name);
         itemModel.setAmount(amount);
         itemModel.setPrice(price);
-
-        return repository.save(itemModel);
+        repository.save(itemModel);
     }
 
     @Override
-    public void IncreaseItemAmount(Long id, int amount){
+    public void IncreaseItemAmount(Long id, Integer amount){
         if (repository.existsById(id)) {
-            Optional<Item> itemOptional = repository.findById(id);
-            Item item= itemOptional.get();
+            Item item = repository.findById(id).get();
             item.setAmount(item.getAmount()+amount);
             repository.save(item);
         }

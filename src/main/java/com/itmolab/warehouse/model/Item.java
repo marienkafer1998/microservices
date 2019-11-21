@@ -10,17 +10,16 @@ import javax.persistence.Table;
 @Table(name = "items")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-    private int amount;
-    private float price;
+    private Integer amount;
+    private Float price;
 
     public Item() {
     }
 
-    public Item(Long id, String name, int amount, float price) {
+    public Item(Long id, String name, Integer amount, Float price) {
         this.id = id;
         this.name = name;
         this.amount = amount;
@@ -39,7 +38,7 @@ public class Item {
         this.name = name;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
@@ -47,7 +46,7 @@ public class Item {
         this.amount = amount;
     }
 
-    public float getPrice(){
+    public Float getPrice(){
         return price;
     }
 

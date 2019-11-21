@@ -7,6 +7,6 @@ import java.util.Optional;
 public interface IItemService {
     List<Item> findAll();
     Optional<Item> findById(Long id);
-    Item CreateItem(String name, int amount, float price);
-    void IncreaseItemAmount(Long id, int amount);
+    void CreateItem(String name, Integer amount, Float price);
+    void IncreaseItemAmount(Long id, Integer amount);
 }
