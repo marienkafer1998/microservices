@@ -67,7 +67,9 @@ public class WarehouseController {
 
     @RabbitListener(queues = "queue")
     public void updateItemAmount(byte[] message) throws IOException {
+
         String mess = new String(message);
+        System.out.println(mess);
         ObjectMapper mapper = new ObjectMapper();
         JsonNode actualObj = mapper.readTree(mess);
         Long id = actualObj.get("item_id").asLong();
