@@ -21,6 +21,11 @@ public class RabbitConfiguration {
     }
 
     @Bean
+    public Queue hello() {
+        return  new Queue("hello");
+    }
+
+    @Bean
     public Binding binding(DirectExchange directExchange, Queue queue) {
         return BindingBuilder.bind(queue).to(directExchange).with("item");
     }
